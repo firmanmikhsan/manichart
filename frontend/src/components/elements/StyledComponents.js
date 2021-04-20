@@ -84,7 +84,6 @@ export default function ItemDetailTabbar(data) {
           <Tab label="Characters" {...a11yProps(1)} />
           <Tab label="Staff" {...a11yProps(2)} />
           <Tab label="Stats" {...a11yProps(3)} />
-          <Tab label="Socials" {...a11yProps(4)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -311,7 +310,7 @@ export default function ItemDetailTabbar(data) {
       <TabPanel value={value} index={1}>
         <Grid container spacing={1} direction="row" justify="space-between">
           {data.data.Media.characters.edges.map((media) => (
-            <Grid container item spacing={5} xs={12} sm={12} md={4} lg={4} alignItems="strecth" style={{
+            <Grid container item spacing={5} xs={12} sm={12} md={4} lg={6} alignItems="strecth" style={{
               padding: "15px"
             }}>
               <div className={classes.paper}>
@@ -350,40 +349,91 @@ export default function ItemDetailTabbar(data) {
                       </Grid>
                     </Grid>
                   </Grid>
-                  <Grid container item lg={6}>
+                  {media.voiceActors.length > 0 &&
+                    <Grid container item lg={6}>
+                      <Grid item lg={8} sm container>
+                        <Grid item xs container direction="column" spacing={2}>
+                          <Grid item xs>
+                            <Typography gutterBottom variant="subtitle1" style={{
+                              fontSize: "12px",
+                              textAlign: "right"
+                            }}>
+                            {media.voiceActors[0].name.full}
+                            </Typography>
+                            <Typography variant="body2" color="textSecondary" style={{
+                              fontSize: "10px",
+                              textAlign: "right"
+                            }}>
+                            {media.voiceActors[0].name.native}
+                            </Typography>
+                          </Grid>
+                          <Grid item>
+                            <Typography variant="body2" style={{ 
+                              cursor: 'pointer',
+                              fontSize: "10px",
+                              textAlign: "right"
+                            }}>
+                            Japanese
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid item lg={4}>
+                        <ButtonBase style={{
+                          display: "block"
+                        }}>
+                          <img className={classes.img} alt="complex" src={media.voiceActors[0].image.medium} />
+                        </ButtonBase>
+                      </Grid>
+                    </Grid>
+                  }
+                </Grid>
+              </Paper>
+              </div>
+            </Grid>
+          ))}
+        </Grid>
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+      <Grid container spacing={1} direction="row" justify="space-between">
+          {data.data.Media.staff.edges.map((media) => (
+            <Grid container item spacing={5} xs={12} sm={12} md={4} lg={4} alignItems="strecth" style={{
+              padding: "15px"
+            }}>
+              <div className={classes.paper}>
+              <Paper className={classes.paper}>
+                <Grid container spacing={2} justify="space-between">
+                  <Grid container item lg={12}>
+                    <Grid item lg={4}>
+                      <ButtonBase style={{
+                        display: "block"
+                      }}>
+                        <img className={classes.img} alt="complex" src={media.node.image.medium} />
+                      </ButtonBase>
+                    </Grid>
                     <Grid item lg={8} sm container>
                       <Grid item xs container direction="column" spacing={2}>
                         <Grid item xs>
                           <Typography gutterBottom variant="subtitle1" style={{
-                            fontSize: "12px",
-                            textAlign: "right"
+                            fontSize: "12px"
                           }}>
-                          {media.voiceActors[0].name.full}
+                          {media.node.name.full}
                           </Typography>
                           <Typography variant="body2" color="textSecondary" style={{
-                            fontSize: "10px",
-                            textAlign: "right"
+                            fontSize: "10px"
                           }}>
-                          {media.voiceActors[0].name.native}
+                          {media.node.name.native}
                           </Typography>
                         </Grid>
                         <Grid item>
                           <Typography variant="body2" style={{ 
                             cursor: 'pointer',
-                            fontSize: "10px",
-                            textAlign: "right"
+                            fontSize: "10px"
                           }}>
-                          Japanese
+                          {media.role}
                           </Typography>
                         </Grid>
                       </Grid>
-                    </Grid>
-                    <Grid item lg={4}>
-                      <ButtonBase style={{
-                        display: "block"
-                      }}>
-                        <img className={classes.img} alt="complex" src={media.voiceActors[0].image.medium} />
-                      </ButtonBase>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -393,14 +443,152 @@ export default function ItemDetailTabbar(data) {
           ))}
         </Grid>
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        Staff
-      </TabPanel>
       <TabPanel value={value} index={3}>
-        Stats
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Social
+        <div>
+          <Typography gutterBottom variant="h5" component="h2" style={{
+            paddingTop: "24px",
+            paddingBottom: "5px",
+            fontSize: "17px"
+          }}>
+            Ranking
+          </Typography>
+          <Grid container spacing={1} direction="row" justify="space-between">
+            {data.data.Media.rankings.map((media) => (
+                <Grid container item sm={6} md={6} lg={4}>
+                  <div style={{
+                    border: "1px solid rgba(0,0,0,0.3)",
+                    borderRadius: "10px",
+                    padding: "5px",
+                    width: "100%"
+                  }}>
+                    <p style={{
+                      margin: 0,
+                      textAlign: "center",
+                      fontSize: "12px",
+                      color: randomColor({
+                        luminosity: 'dark',
+                        hue: 'blue'
+                      })
+                    }}>
+                      #{media.rank} {media.context} {media.year ?? ""}
+                    </p>
+                  </div>
+                </Grid>
+            ))}
+          </Grid>
+        </div>
+        <div>
+          <Grid container spacing={1} direction="row" justify="space-between">
+            <Grid container item xs={12} sm={12} md={12} lg={12} spacing={1} align="strecth" style={{
+              padding: "15px"
+            }}>
+              <div style={{
+                position: "relative",
+                width: "100%",
+                marginLeft: "5px",
+                marginRight: "5px"
+              }}>
+                <Typography gutterBottom variant="h5" component="h2" style={{
+                  paddingTop: "24px",
+                  paddingBottom: "5px",
+                  fontSize: "17px"
+                }}>
+                  Status Distribution
+                </Typography>
+              </div>
+              {data.data.Media.stats.statusDistribution.map((media) => (
+                <div style={{
+                  marginLeft: "5px",
+                  marginRight: "5px"
+                }}>
+                  <div style={{
+                    backgroundColor: randomColor({
+                      luminosity: 'dark',
+                      hue: 'random'
+                    }),
+                    padding: "8px",
+                    borderRadius: "5px",
+                  }}>
+                    <p style={{
+                      margin: "0",
+                      color: "white",
+                      textTransform: "lowercase",
+                      fontSize: "1rem"
+                    }}>
+                      {media.status}
+                    </p>
+                  </div>
+                  <div>
+                    <p style={{
+                      textAlign: "center",
+                      fontSize: "12px",
+                      color: randomColor({
+                        luminosity: 'dark',
+                        hue: 'blue'
+                      })
+                    }}>
+                      {media.amount} users
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </Grid>
+            <Grid container item xs={12} sm={12} md={12} lg={12} spacing={1} align="strecth" style={{
+              padding: "15px"
+            }}>
+              <div style={{
+                position: "relative",
+                width: "100%",
+                marginLeft: "5px",
+                marginRight: "5px"
+              }}>
+                <Typography gutterBottom variant="h5" component="h2" style={{
+                  paddingTop: "24px",
+                  paddingBottom: "5px",
+                  fontSize: "17px"
+                }}>
+                  Score Distribution
+                </Typography>
+              </div>
+              {data.data.Media.stats.scoreDistribution.map((media) => (
+                <div style={{
+                  marginLeft: "5px",
+                  marginRight: "5px"
+                }}>
+                  <div style={{
+                    backgroundColor: randomColor({
+                      luminosity: 'dark',
+                      hue: 'random'
+                    }),
+                    padding: "8px",
+                    borderRadius: "5px",
+                  }}>
+                    <p style={{
+                      margin: "0",
+                      color: "white",
+                      textTransform: "lowercase",
+                      fontSize: "1rem"
+                    }}>
+                      {media.score}
+                    </p>
+                  </div>
+                  <div>
+                    <p style={{
+                      textAlign: "center",
+                      fontSize: "12px",
+                      color: randomColor({
+                        luminosity: 'dark',
+                        hue: 'blue'
+                      })
+                    }}>
+                      {media.amount}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </Grid>
+          </Grid>
+        </div>
       </TabPanel>
     </div>
   );
