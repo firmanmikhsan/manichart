@@ -142,9 +142,7 @@ export default function SearchAppBar() {
                   <AsyncAutoComplete classes={{
                     root: classes.inputRoot,
                     input: classes.inputInput
-                  }} style={{
-                    height: 35
-                }}></AsyncAutoComplete>
+                  }} ></AsyncAutoComplete>
               </div>
           </Grid>
         </Toolbar>

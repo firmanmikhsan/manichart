@@ -59,10 +59,9 @@ function Home() {
     if (error) return `Error! ${error.message}`;
     return (
         <div className={classes.root}>
-          <h2>{id}</h2>
             <Grid container spacing={1} direction="row" justify="space-evenly">
               {data.Page.media.map((media) => (
-                <Grid container item xs={12} sm={12} md={6} lg={3} spacing={5} alignItems="strecth" style={{
+                <Grid container item xs={12} sm={12} md={6} lg={3} spacing={1} alignItems="strecth" style={{
                   paddingTop: "15px",
                   paddingBottom: "15px"
                 }}>

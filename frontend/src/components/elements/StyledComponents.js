@@ -90,7 +90,7 @@ export default function ItemDetailTabbar(data) {
         <div>
           <Grid container spacing={1} direction="row" justify="flex-start">
             {data.data.Media.relations.edges.map((media) => (
-              <Grid container item xs={12} sm={12} md={2} lg={2} spacing={5} alignItems="strecth" style={{
+              <Grid container item xs={12} sm={12} md={2} lg={2} spacing={1} alignItems="strecth" style={{
                 padding: "15px"
               }}>
                 <Card className={classes.card}>
@@ -132,7 +132,7 @@ export default function ItemDetailTabbar(data) {
         <div>
           <Grid container spacing={1} direction="row" justify="space-between">
             {data.data.Media.stats.statusDistribution !== null &&
-              <Grid container item xs={12} sm={12} md={6} lg={6} spacing={5} align="strecth" style={{
+              <Grid container item xs={12} sm={12} md={6} lg={6} spacing={1} align="strecth" style={{
                 padding: "15px"
               }}>
                 <div style={{
@@ -188,7 +188,7 @@ export default function ItemDetailTabbar(data) {
               </Grid>
             }
             {data.data.Media.stats.scoreDistribution !== null &&
-              <Grid container item xs={12} sm={12} md={6} lg={6} spacing={5} align="strecth" style={{
+              <Grid container item xs={12} sm={12} md={6} lg={6} spacing={1} align="strecth" style={{
                 padding: "15px"
               }}>
                 <div style={{
@@ -255,7 +255,7 @@ export default function ItemDetailTabbar(data) {
               Trailer
             </Typography>
             <Grid container spacing={1} direction="row" justify="space-between">
-              <Grid container item xs={12} sm={12} md={6} lg={6} spacing={5} align="strecth" style={{
+              <Grid container item xs={12} sm={12} md={6} lg={6} spacing={1} align="strecth" style={{
                   padding: "15px"
                 }}>
                   <YoutubeEmbed embedID={data.data.Media.trailer.id}></YoutubeEmbed>
@@ -273,7 +273,7 @@ export default function ItemDetailTabbar(data) {
           </Typography>
           <Grid container spacing={1} direction="row" justify="flex-start">
             {data.data.Media.recommendations.edges.map((media) => (
-              <Grid container item xs={12} sm={12} md={2} lg={2} spacing={5} alignItems="strecth" style={{
+              <Grid container item xs={12} sm={12} md={2} lg={2} spacing={1} alignItems="strecth" style={{
                 padding: "15px"
               }}>
                 <Card className={classes.card}>
@@ -316,7 +316,7 @@ export default function ItemDetailTabbar(data) {
       <TabPanel value={value} index={1}>
         <Grid container spacing={1} direction="row" justify="space-between">
           {data.data.Media.characters.edges.map((media) => (
-            <Grid container item spacing={5} xs={12} sm={12} md={4} lg={6} alignItems="strecth" style={{
+            <Grid container item spacing={1} xs={12} sm={12} md={4} lg={6} alignItems="strecth" style={{
               padding: "15px"
             }}>
               <div className={classes.paper}>
@@ -401,14 +401,14 @@ export default function ItemDetailTabbar(data) {
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={2}>
-      <Grid container spacing={1} direction="row" justify="space-between">
+      <Grid container spacing={1} direction="row" justify="flex-start">
           {data.data.Media.staff.edges.map((media) => (
-            <Grid container item spacing={5} xs={12} sm={12} md={4} lg={4} alignItems="strecth" style={{
+            <Grid container item spacing={1} xs={12} sm={12} md={4} lg={4} alignItems="strecth" style={{
               padding: "15px"
             }}>
               <div className={classes.paper}>
               <Paper className={classes.paper}>
-                <Grid container spacing={2} justify="space-between">
+                <Grid container spacing={2} justify="flex-start">
                   <Grid container item lg={12}>
                     <Grid item lg={4}>
                       <ButtonBase style={{

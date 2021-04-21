@@ -4,7 +4,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { gql } from "@apollo/client";
 import { client } from '../../index';
-import { Grid, Link, makeStyles } from '@material-ui/core';
+import { fade, Grid, Link, makeStyles } from '@material-ui/core';
 import { lightBlue } from '@material-ui/core/colors';
 import { BrowserRouter as Router } from 'react-router-dom';
 import SearchIcon from '@material-ui/icons/Search';
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
             color: "white"
         },
         "& .MuiInputLabel-outlined": {
-            color: "white"
+            color: fade(theme.palette.common.white, 0.6)
         },
         "&:hover .MuiInputLabel-outlined": {
             color: "white"
