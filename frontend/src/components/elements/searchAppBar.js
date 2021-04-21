@@ -1,8 +1,8 @@
-import { AppBar, fade, Grid, InputBase, makeStyles, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, fade, Grid, makeStyles, Toolbar, Typography } from '@material-ui/core';
 import { cyan, lightBlue } from '@material-ui/core/colors';
-import SearchIcon from '@material-ui/icons/Search';
 import 'fontsource-roboto'
 import { NavLink } from 'react-router-dom';
+import AsyncAutoComplete from './AsyncAutoComplete';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -93,67 +93,62 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
   }
 
-  export default function SearchAppBar() {
-    const classes = useStyles();
-  
-    return (
-      <div className={classes.root}>
-        <AppBar position="static" style={{ background: `${lightBlue[700]}` }}>
-          <Toolbar>
-            <Grid container direction="row" justify="space-between" alignItems="center">
-                <Typography className={classes.title} variant="h6" noWrap>
-                    ManAniChart
-                </Typography>
-                <Typography className={classes.typoLink} align="left">
-                    <NavLink to="/spring" activeStyle={linkActiveStyle} className={classes.link}>
-                        <div className={classes.linkDiv}>
-                          Spring
-                        </div>
-                        <div className={classes.linkDivSmall}>
-                          {new Date().getFullYear()}
-                        </div>
-                    </NavLink>
-                    <NavLink to="/summer" activeStyle={linkActiveStyle} className={classes.link}>
-                        <div className={classes.linkDiv}>
-                          Summer
-                        </div>
-                        <div className={classes.linkDivSmall}>
-                          {new Date().getFullYear()}
-                        </div>
-                    </NavLink>
-                    <NavLink to="/fall" activeStyle={linkActiveStyle} className={classes.link}>
-                        <div className={classes.linkDiv}>
-                          Fall
-                        </div>
-                        <div className={classes.linkDivSmall}>
-                          {new Date().getFullYear()}
-                        </div>
-                    </NavLink>
-                    <NavLink to="/winter" activeStyle={linkActiveStyle} className={classes.link}>
-                        <div className={classes.linkDiv}>
-                          Winter
-                        </div>
-                        <div className={classes.linkDivSmall}>
-                          {new Date().getFullYear()}
-                        </div>
-                    </NavLink>
-                </Typography>
-                <div className={classes.search}>
-                    <div className={classes.searchIcon}>
-                        <SearchIcon />
-                    </div>
-                    <InputBase
-                        placeholder="Search…"
-                        classes={{
-                        root: classes.inputRoot,
-                        input: classes.inputInput,
-                        }}
-                        inputProps={{ 'aria-label': 'search' }}
-                    />
-                </div>
-            </Grid>
-          </Toolbar>
-        </AppBar>
-      </div>
-    );
-  }
+export default function SearchAppBar() {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.root}>
+      <AppBar position="static" style={{ background: `${lightBlue[700]}` }}>
+        <Toolbar>
+          <Grid container direction="row" justify="space-between" alignItems="center">
+              <Typography className={classes.title} variant="h6" noWrap>
+                  ManAniChart
+              </Typography>
+              <Typography className={classes.typoLink} align="left">
+                  <NavLink to="/spring" activeStyle={linkActiveStyle} className={classes.link}>
+                      <div className={classes.linkDiv}>
+                        Spring
+                      </div>
+                      <div className={classes.linkDivSmall}>
+                        {new Date().getFullYear()}
+                      </div>
+                  </NavLink>
+                  <NavLink to="/summer" activeStyle={linkActiveStyle} className={classes.link}>
+                      <div className={classes.linkDiv}>
+                        Summer
+                      </div>
+                      <div className={classes.linkDivSmall}>
+                        {new Date().getFullYear()}
+                      </div>
+                  </NavLink>
+                  <NavLink to="/fall" activeStyle={linkActiveStyle} className={classes.link}>
+                      <div className={classes.linkDiv}>
+                        Fall
+                      </div>
+                      <div className={classes.linkDivSmall}>
+                        {new Date().getFullYear()}
+                      </div>
+                  </NavLink>
+                  <NavLink to="/winter" activeStyle={linkActiveStyle} className={classes.link}>
+                      <div className={classes.linkDiv}>
+                        Winter
+                      </div>
+                      <div className={classes.linkDivSmall}>
+                        {new Date().getFullYear()}
+                      </div>
+                  </NavLink>
+              </Typography>
+              <div className={classes.search}>
+                  <AsyncAutoComplete classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput
+                  }} style={{
+                    height: 35
+                }}></AsyncAutoComplete>
+              </div>
+          </Grid>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+}

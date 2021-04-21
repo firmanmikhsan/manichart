@@ -266,7 +266,9 @@ function DetailItem() {
                     </Grid>
                 </Grid>
                 <Grid container spacing={1} direction="row" justify="flex-start">
-                    <div>
+                    <div style={{
+                        maxWidth: "15%"
+                    }}>
                         <Grid container item spacing={1} direction="row">
                             <Grid container item spacing={1} direction="column" justify="flex-start" lg={12} style={{
                                 padding: "15px"
@@ -300,7 +302,7 @@ function DetailItem() {
                                 <div style={{
                                     backgroundColor: lightBlue[50],
                                     borderRadius: "5px",
-                                    padding: "5px"
+                                    padding: "5px",
                                 }}>
                                     <div className={classes.infoBox}>
                                         <p className={classes.infoTitle}>

@@ -9,7 +9,7 @@ import reportWebVitals from './reportWebVitals';
 // import graphql
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 const aniListURI = "https://graphql.anilist.co";
-const client = new ApolloClient({
+export const client = new ApolloClient({
   uri: aniListURI,
   cache: new InMemoryCache()
 })

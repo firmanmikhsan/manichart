@@ -131,132 +131,138 @@ export default function ItemDetailTabbar(data) {
         </div>
         <div>
           <Grid container spacing={1} direction="row" justify="space-between">
-            <Grid container item xs={12} sm={12} md={6} lg={6} spacing={5} align="strecth" style={{
-              padding: "15px"
-            }}>
-              <div style={{
-                position: "relative",
-                width: "100%",
-                marginLeft: "5px",
-                marginRight: "5px"
-              }}>
-                <Typography gutterBottom variant="h5" component="h2" style={{
-                  paddingTop: "24px",
-                  paddingBottom: "5px",
-                  fontSize: "17px"
-                }}>
-                  Status Distribution
-                </Typography>
-              </div>
-              {data.data.Media.stats.statusDistribution.map((media) => (
-                <div style={{
-                  marginLeft: "5px",
-                  marginRight: "5px"
-                }}>
-                  <div style={{
-                    backgroundColor: randomColor({
-                      luminosity: 'dark',
-                      hue: 'random'
-                    }),
-                    padding: "8px",
-                    borderRadius: "5px",
-                  }}>
-                    <p style={{
-                      margin: "0",
-                      color: "white",
-                      textTransform: "lowercase",
-                      fontSize: "1rem"
-                    }}>
-                      {media.status}
-                    </p>
-                  </div>
-                  <div>
-                    <p style={{
-                      textAlign: "center",
-                      fontSize: "12px",
-                      color: randomColor({
-                        luminosity: 'dark',
-                        hue: 'random'
-                      })
-                    }}>
-                      {media.amount} users
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </Grid>
-            <Grid container item xs={12} sm={12} md={6} lg={6} spacing={5} align="strecth" style={{
-              padding: "15px"
-            }}>
-              <div style={{
-                position: "relative",
-                width: "100%",
-                marginLeft: "5px",
-                marginRight: "5px"
-              }}>
-                <Typography gutterBottom variant="h5" component="h2" style={{
-                  paddingTop: "24px",
-                  paddingBottom: "5px",
-                  fontSize: "17px"
-                }}>
-                  Score Distribution
-                </Typography>
-              </div>
-              {data.data.Media.stats.scoreDistribution.map((media) => (
-                <div style={{
-                  marginLeft: "5px",
-                  marginRight: "5px"
-                }}>
-                  <div style={{
-                    backgroundColor: randomColor({
-                      luminosity: 'dark',
-                      hue: 'random'
-                    }),
-                    padding: "8px",
-                    borderRadius: "5px",
-                  }}>
-                    <p style={{
-                      margin: "0",
-                      color: "white",
-                      textTransform: "lowercase",
-                      fontSize: "1rem"
-                    }}>
-                      {media.score}
-                    </p>
-                  </div>
-                  <div>
-                    <p style={{
-                      textAlign: "center",
-                      fontSize: "12px",
-                      color: randomColor({
-                        luminosity: 'dark',
-                        hue: 'random'
-                      })
-                    }}>
-                      {media.amount}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </Grid>
-          </Grid>
-        </div>
-        <div>
-          <Typography gutterBottom variant="h5" component="h2" style={{
-            paddingTop: "24px",
-            paddingBottom: "5px",
-            fontSize: "17px"
-          }}>
-            Trailer
-          </Typography>
-          <Grid container spacing={1} direction="row" justify="space-between">
-            <Grid container item xs={12} sm={12} md={6} lg={6} spacing={5} align="strecth" style={{
+            {data.data.Media.stats.statusDistribution !== null &&
+              <Grid container item xs={12} sm={12} md={6} lg={6} spacing={5} align="strecth" style={{
                 padding: "15px"
               }}>
-                <YoutubeEmbed embedID={data.data.Media.trailer.id}></YoutubeEmbed>
-            </Grid>
+                <div style={{
+                  position: "relative",
+                  width: "100%",
+                  marginLeft: "5px",
+                  marginRight: "5px"
+                }}>
+                  <Typography gutterBottom variant="h5" component="h2" style={{
+                    paddingTop: "24px",
+                    paddingBottom: "5px",
+                    fontSize: "17px"
+                  }}>
+                    Status Distribution
+                  </Typography>
+                </div>
+                {data.data.Media.stats.statusDistribution.map((media) => (
+                  <div style={{
+                    marginLeft: "5px",
+                    marginRight: "5px"
+                  }}>
+                    <div style={{
+                      backgroundColor: randomColor({
+                        luminosity: 'dark',
+                        hue: 'random'
+                      }),
+                      padding: "8px",
+                      borderRadius: "5px",
+                    }}>
+                      <p style={{
+                        margin: "0",
+                        color: "white",
+                        textTransform: "lowercase",
+                        fontSize: "1rem"
+                      }}>
+                        {media.status}
+                      </p>
+                    </div>
+                    <div>
+                      <p style={{
+                        textAlign: "center",
+                        fontSize: "12px",
+                        color: randomColor({
+                          luminosity: 'dark',
+                          hue: 'random'
+                        })
+                      }}>
+                        {media.amount} users
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </Grid>
+            }
+            {data.data.Media.stats.scoreDistribution !== null &&
+              <Grid container item xs={12} sm={12} md={6} lg={6} spacing={5} align="strecth" style={{
+                padding: "15px"
+              }}>
+                <div style={{
+                  position: "relative",
+                  width: "100%",
+                  marginLeft: "5px",
+                  marginRight: "5px"
+                }}>
+                  <Typography gutterBottom variant="h5" component="h2" style={{
+                    paddingTop: "24px",
+                    paddingBottom: "5px",
+                    fontSize: "17px"
+                  }}>
+                    Score Distribution
+                  </Typography>
+                </div>
+                {data.data.Media.stats.scoreDistribution.map((media) => (
+                  <div style={{
+                    marginLeft: "5px",
+                    marginRight: "5px"
+                  }}>
+                    <div style={{
+                      backgroundColor: randomColor({
+                        luminosity: 'dark',
+                        hue: 'random'
+                      }),
+                      padding: "8px",
+                      borderRadius: "5px",
+                    }}>
+                      <p style={{
+                        margin: "0",
+                        color: "white",
+                        textTransform: "lowercase",
+                        fontSize: "1rem"
+                      }}>
+                        {media.score}
+                      </p>
+                    </div>
+                    <div>
+                      <p style={{
+                        textAlign: "center",
+                        fontSize: "12px",
+                        color: randomColor({
+                          luminosity: 'dark',
+                          hue: 'random'
+                        })
+                      }}>
+                        {media.amount}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </Grid>
+            }
           </Grid>
         </div>
+        {data.data.Media.trailer !== null &&
+          <div>
+            <Typography gutterBottom variant="h5" component="h2" style={{
+              paddingTop: "24px",
+              paddingBottom: "5px",
+              fontSize: "17px"
+            }}>
+              Trailer
+            </Typography>
+            <Grid container spacing={1} direction="row" justify="space-between">
+              <Grid container item xs={12} sm={12} md={6} lg={6} spacing={5} align="strecth" style={{
+                  padding: "15px"
+                }}>
+                  <YoutubeEmbed embedID={data.data.Media.trailer.id}></YoutubeEmbed>
+              </Grid>
+            </Grid>
+          </div>
+        }
         <div>
           <Typography gutterBottom variant="h5" component="h2" style={{
             paddingTop: "24px",
@@ -452,7 +458,7 @@ export default function ItemDetailTabbar(data) {
           }}>
             Ranking
           </Typography>
-          <Grid container spacing={1} direction="row" justify="space-between">
+          <Grid container spacing={1} direction="row" justify="flex-start">
             {data.data.Media.rankings.map((media) => (
                 <Grid container item sm={6} md={6} lg={4}>
                   <div style={{
